@@ -59,7 +59,7 @@ bot.on('message', msg=>{
 	}
 	let args = msg.content.substring(PREFIX.length - 1).split(" ");
 	switch(args[0]){
-		case '​purge':
+		case '-purge':
 			const command = args.join(" ");
 			if(command.includes('-')) return;
 			if(!msg.member.hasPermission("MANAGE_MESSAGES")) return msg.channel.sendMessage("You don't have the permission to purge messages!");
@@ -67,7 +67,7 @@ bot.on('message', msg=>{
 			if(!args[1]) return msg.channel.sendMessage('Please specify a number of messages to be purged!');
 			msg.channel.bulkDelete(args[1]);
 		break;
-		case '​iregards':
+		case '-iregards':
 			mention = msg.mentions.users.first();
 			if(!msg.member.roles.find(r => r.name === "Leader")) return msg.channel.sendMessage("You are not the leader. You can't do that.");
 			if(!msg.author.id === '333357946744602647') return msg.channel.sendMessage("You are not the leader. You can't do that.");
@@ -77,7 +77,7 @@ bot.on('message', msg=>{
 			mention.sendMessage(regard);
 			msg.channel.bulkDelete(1);
 		break;
-		case '​announcement':
+		case '-announcement':
 			if(!args[1]) return msg.channel.sendMessage('What are you trying to announce?')
 			if(!msg.member.hasPermission("ADMINISTRATOR")) return msg.channel.sendMessage("You don't have the permission to make an announcement!");
 			if(!msg.guild.me.hasPermission("ADMINISTRATOR")) return msg.channel.sendMessage("I don't have the allowed permission to make an announcement!");
@@ -90,7 +90,7 @@ bot.on('message', msg=>{
 			achannel.sendMessage('@everyone \n \n' + aMessage + '\n \n' + 'Announcement made by ' + aAuthor + '.')
 			achannel.sendMessage(agif)
 		break;
-		case '​kick':
+		case '-kick':
 			if(!args[1]) return msg.channel.sendMessage('Please specify a user!')
 			const tuser = msg.mentions.users.first();
 			const kreason = args.join(" ").slice(28);
@@ -120,7 +120,7 @@ bot.on('message', msg=>{
 				}
 			}
 		break;
-		case '​ban':
+		case '-ban':
 			if(!args[1]) return msg.channel.sendMessage('Please specify a user!')
 			const user = msg.mentions.users.first();
 			const breason = args.join(" ").slice(27);
@@ -150,7 +150,7 @@ bot.on('message', msg=>{
 				}
 			}
 		break;
-		case '​unban':
+		case '-unban':
 			if(!args[1]) return msg.channel.sendMessage('Please specify a user ID!')
 			if(!msg.member.hasPermission("BAN_MEMBERS")) return msg.channel.sendMessage("You don't have the permission to unban someone!");
 			if(!msg.guild.me.hasPermission("BAN_MEMBERS")) return msg.channel.sendMessage("I don't have the allowed permission to unban someone!");
