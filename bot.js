@@ -12,34 +12,21 @@ bot.on('ready', () =>{
 
 bot.on('guildMemberAdd', member =>{
 
-	const channel = member.guild.channels.find(channel => channel.name === "wɇƚ¢¤₥ɇ");
+	const channel = member.guild.channels.find(channel => channel.name === "ᴡᴇʟᴄᴏᴍᴇ");
 	if(!channel) return;
-	let role = member.guild.roles.find("name", "Hidden user.");
+	let role = member.guild.roles.find("name", "The lost ones.");
 	member.addRole(role.id);
-	channel.sendMessage(`Welcome in Ɦıᴅᴅᴇɴ Ðıᴠısıᴏɴ Ᵽᴜʙʟıᴄ. Be sure you are hidden over here, ${member}.`);
+	channel.sendMessage(`Welcome in The Lost Ring. Be sure you have your ring, ${member}.`);
 })
 
 bot.on('guildMemberRemove', member =>{
 
-	const channel = member.guild.channels.find(channel => channel.name === "wɇƚ¢¤₥ɇ");
+	const channel = member.guild.channels.find(channel => channel.name === "ᴡᴇʟᴄᴏᴍᴇ");
 	if(!channel) return;
-	channel.sendMessage(`I guess ${member} wasn't hidden to stay here...`)
+	channel.sendMessage(`I guess ${member} didn't get his ring...`)
 })
 
 bot.on('message', msg=>{
-	if(msg.content === "I'm hidden."){
-		msg.reply('Ｓｔａｙ  ｈｉｄｄｅｎ  ｔｈｅｎ．');
-	}
-	if(msg.content === "I'm not hidden."){
-		msg.reply('Why are you still here then?');
-	}
-	if(msg.content === "-test"){
-		msg.channel.sendMessage('This is a test.');
-	}
-	if(msg.content === "-hidden gif"){
-		const gif = new Attachment('https://media.discordapp.net/attachments/572096391149649920/572508265506668556/Hidden_Division.gif');
-		msg.channel.sendMessage(gif);
-	}
 	if(msg.content === "-meme"){
 		const randomPuppy = require('random-puppy');
 		const snekfetch = require('snekfetch');
@@ -70,51 +57,6 @@ bot.on('message', msg=>{
 			});
 		});
 	}
-	if(msg.content === "-gang info"){
-		const gembed = new RichEmbed()
-		.setTitle('Ɦıᴅᴅᴇɴ Ðıᴠısıᴏɴ infos :')
-		.addField('Members', "16 Official members.")
-		.addField('Allies', "𝔅𝔬𝔯𝔫 𝔎𝔦𝔩𝔩𝔢𝔯𝔰(ℭ𝔲𝔯𝔰𝔵𝔡𝔟𝔞𝔢 / Fridy)\nSpanzer Gang (Spanzer)\nFile Drop Zone (ShadowWovle)\nΩmega Gang (Ashlee | Ωmega)\n𝕸𝖊𝖓𝖆𝖈𝖊 (Loren / Vitriolic / Sache)\nTrip Gang (cyb3r)\nKFC Gang (Frostbite / ℭ𝔲𝔯𝔰𝔵𝔡𝔟𝔞𝔢)")
-		.setColor(0x160033);
-		msg.channel.sendEmbed(gembed);
-	}
-	if(msg.content === "-allies"){
-		msg.author.sendMessage("𝔅𝔬𝔯𝔫 𝔎𝔦𝔩𝔩𝔢𝔯𝔰: https://discord.gg/Bb9s5hm\nKFC Gang: https://discord.gg/bw7NXMn\nΩmega Gang: https://discord.gg/SkxaYs6\nFile Drop Zone: https://discord.gg/ywd2Pkm\n𝕸𝖊𝖓𝖆𝖈𝖊 : https://discord.gg/NrQACSt\nTrip Gang : https://discord.gg/EdUhmV2");
-		msg.channel.sendMessage("Allies invite links has been sent to you in your DM's");
-	}
-	if(msg.content === "-help"){
-		const embed = new RichEmbed()
-		.setTitle('Available Commands :')
-		.addField('General commands', "'-help' : Shows you all available commands.\n'-gang info' : Shows you all information of Ɦıᴅᴅᴇɴ Ðıᴠısıᴏɴ.\n'-allies' : Sends you all allies invite links in your DM's.\n'kick' (With the hidden prefix) : Kicks a specific user from the server.\n'ban' (With the hidden prefix) : Ban a specific user from the server.\n'unban' (With the hidden prefix) : Unban a specific user from the server (Only with the discord ID).\n'purge' (With the hidden prefix) : Pruge a specific amount of messages on the channel.\n'announcement' (With the hidden prefix) : Make a public announcement to the server.")
-		.addField('Entertainment commands', "'-test' : Just a test.\n'-meme' : Sends memes.\n'-OwO' : Makes any text in OwO.\n'-hidden gif' : Ɦıᴅᴅᴇɴ Ðıᴠısıᴏɴ is here to spread the truth. \n 'Pwease send Spanzer's thighs.' (Without the prefix) : Send's Spanzer's thighs.\n'ah.mp4' (Without the prefix) : Ah! (earrape).\n'I'm hidden.' (Without the prefix) : Of course you better be hidden.\n'I'm not hidden.' (Without the prefix) : Please don't say that.")
-		.addField('Current normal prefix', "'-' : It's the current prefix.\nThe hidden prefix is secret and kept away from others for more security.")
-		.setColor(0x160033)
-		msg.channel.sendEmbed(embed);
-	}
-	if(msg.content === "Pwease send Spanzer's thighs."){
-		const attachement = new Attachment('https://cdn.discordapp.com/attachments/574629212258959387/594448748256428042/JPEG_20190510_205536.jpg');
-		msg.channel.sendMessage(attachement);
-	}
-	if(msg.content === "ah.mp4"){
-		const attachement = new Attachment('https://cdn.discordapp.com/attachments/545281417571991572/595472395159076890/ah.mp4');
-		msg.channel.sendMessage(attachement);
-	}
-	let args2 = msg.content.substring(testpre.length - 1).split(" ");
-	switch(args2[0]){
-		case '-OwO':
-			if(!args2[1]) return msg.channel.sendMessage('OwO?');
-			const owoMessage = args2.join(" ").slice(5);
-			someString = owoMessage
-			anotherString = someString.replace(/r/g, 'w');
-			s1 = anotherString.replace(/R/g, 'W');
-			s2 = s1.replace(/y/g, 'w');
-			s3 = s2.replace(/Y/g, 'W');
-			s4 = s3.replace(/l/g, 'w');
-			s5 = s4.replace(/L/g, 'W');
-			msg.channel.bulkDelete('1');
-			msg.channel.sendMessage(s5);
-		break;
-	}
 	let args = msg.content.substring(PREFIX.length - 1).split(" ");
 	switch(args[0]){
 		case '​purge':
@@ -140,7 +82,7 @@ bot.on('message', msg=>{
 			if(!msg.member.hasPermission("ADMINISTRATOR")) return msg.channel.sendMessage("You don't have the permission to make an announcement!");
 			if(!msg.guild.me.hasPermission("ADMINISTRATOR")) return msg.channel.sendMessage("I don't have the allowed permission to make an announcement!");
 			const aMessage = args.join(" ").slice(14);
-			const achannel = bot.channels.find(channel => channel.name === "₳ᵰᵰ¤ᵾᵰ¢ɇ₥ɇᵰʈ");
+			const achannel = bot.channels.find(channel => channel.name === "ᴀɴɴᴏᴜɴᴄᴇᴍᴇɴᴛ");
 			const aAuthor = msg.author.username
 			const agif = new Attachment('https://media.discordapp.net/attachments/572096391149649920/572508265506668556/Hidden_Division.gif');
 			if(!achannel) return;
