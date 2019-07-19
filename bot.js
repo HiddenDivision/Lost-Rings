@@ -7,7 +7,7 @@ const testpre = '-';
 
 bot.on('ready', () =>{
 	console.log('Hidden division is now hidden.');
-	bot.user.setActivity('you.', { type: ('WATCHING')})
+	bot.user.setActivity('to you.', { type: ('LISTENING')})
 })
 
 bot.on('guildMemberAdd', member =>{
